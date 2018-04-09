@@ -1,0 +1,66 @@
+<head>
+  <meta charset="utf-8">
+  <title>N5CompleteGuide</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
+</head>
+<div class="container">
+  <h2 class="page-header">Add Contacts</h2>
+  <form>
+    <div class="form-group">
+      <label>First Name:</label>
+      <input type="text" [(ngModel)]='first_name' class='form-control' name='first_name' placeholder="Enter your First Name">
+    </div>
+    <div class="form-group">
+      <label>Last Name:</label>
+      <input type="text" [(ngModel)]='last_name' class='form-control' name='last_name' placeholder="Enter your Last Name">
+    </div>
+    <div class="form-group">
+      <label>Phone Number:</label>
+      <input type="text" [(ngModel)]='phone' class='form-control' name='phone' required placeholder="Enter your Phone Number">
+    </div>
+    <input type="button" (click)='addContact()' class="btn btn-success" value="Add Contact">
+  </form>
+</div>
+
+<div class="container">
+  <h3 class="page-header">Contacts Displayed</h3>
+
+  <table class="col-md-8" >
+    <tr style="font-size: 12px">
+      <th>
+        First Name
+      </th>
+      <th>
+        Last Name
+      </th>
+      <th>
+        Phone Number
+      </th>
+      <th>
+
+      </th>
+      <br>
+    </tr>
+    <ng-container *ngFor="let contact of contacts">
+      <tr>
+        <td>
+          {{contact.first_name}}
+        </td>
+        <td>
+          {{contact.last_name}}
+        </td>
+        <td>
+          {{contact.phone}}
+        </td>
+        <td>
+          <input type="button" (click)="deleteContact(contact._id)" value="Delete" class="btn btn-danger">
+        </td>
+      </tr>
+      <br>
+    </ng-container>
+  </table>
+
+</div>
